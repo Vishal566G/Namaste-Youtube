@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_API } from "../utils/constants";
 
 const VideoCard = () => {
-  const [videos, setVideos] = useState(null);  // Set initial state to null
+  const [videos, setVideos] = useState(null); // Set initial state to null
 
   useEffect(() => {
     getVideos();
@@ -12,7 +12,7 @@ const VideoCard = () => {
     try {
       const data = await fetch(YOUTUBE_API);
       const json = await data.json();
-      
+
       // Check if 'items' exist and contains data
       if (json.items && json.items.length > 0) {
         setVideos(json.items[0]);
@@ -32,7 +32,7 @@ const VideoCard = () => {
 
   // Ensure snippet and statistics exist before destructuring
   const { snippet, statistics } = videos || {};
-  
+
   if (!snippet) {
     return <div>Snippet data is missing.</div>;
   }
@@ -40,14 +40,18 @@ const VideoCard = () => {
   const { channelTitle, title, thumbnails } = snippet;
 
   return (
-    <div>
+    <div className="p-2 m-2 w-72 shadow-lg">
       {thumbnails && thumbnails.default && (
-        <img src={thumbnails.default.url} alt="thumbnail" />
+        <img
+          className="w-full bg-cover"
+          src={thumbnails.maxres.url}
+          alt="thumbnail"
+        />
       )}
       <ul>
-        <li>{title || "No title"} - title</li>
-        <li>{channelTitle || "No channel title"} - channelTitle</li>
-        {statistics && <li>{statistics.viewCount} - views</li>}
+        <li className="font-bold py-2">{title || "No title"}</li>
+        <li>{channelTitle || "No channel title"}</li>
+        {statistics && <li>{statistics.viewCount}</li>}
       </ul>
     </div>
   );

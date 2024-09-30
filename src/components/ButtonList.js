@@ -10,7 +10,17 @@ const ButtonList = () => {
     "Global",
     "Environment",
     "Politics",
-    "MyBabes",
+    "Cooking",
+    "Street food",
+    "Data structures",
+    "Web development",
+    "Reactjs",
+    "Nextjs",
+    "MongoDB",
+    "MERN",
+    "Github",
+    "Css",
+    "Javascript",
   ];
   return (
     <div className="flex max-w-[1300px] overflow-scroll no-scrollbar">

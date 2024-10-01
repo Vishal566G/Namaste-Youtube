@@ -1,7 +1,10 @@
 import React from "react";
 import Button from "./Button";
+import { useSelector } from "react-redux";
 
 const ButtonList = () => {
+  const expand = useSelector((store) => store.app.isMenuOpen)
+
   const list = [
     "All",
     "Music",
@@ -12,18 +15,10 @@ const ButtonList = () => {
     "Politics",
     "Cooking",
     "Street food",
-    "Data structures",
-    "Web development",
-    "Reactjs",
-    "Nextjs",
-    "MongoDB",
-    "MERN",
-    "Github",
-    "Css",
-    "Javascript",
+   
   ];
   return (
-    <div className="flex max-w-[1300px] overflow-scroll no-scrollbar">
+    <div className="flex w-full overflow-auto no-scrollbar">
       {list.map((item) => {
         return <Button name={item} key={item} />;
       })}

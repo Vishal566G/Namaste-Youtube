@@ -35,7 +35,9 @@ const VideoContainer = () => {
           </Link>
         ))
       ) : (
-        <p>Loading...</p>
+        <p className="font-bold flex items-center justify-center w-full mt-60 text-2xl">
+          Loading...
+        </p>
       )}
     </div>
   );

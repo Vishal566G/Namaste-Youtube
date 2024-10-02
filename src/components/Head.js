@@ -4,6 +4,7 @@ import Youtube_logo from "../utils/youtube.svg";
 import usericon from "../utils/usericon.svg";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Head = () => {
           src={hamburgur}
           alt="Hamburgur"
         />
-        <img className="h-7" src={Youtube_logo} alt="logo" />
+       <Link to={"/"}> <img className="h-7" src={Youtube_logo} alt="logo" /></Link>
       </div>
 
       <div className="col-span-10 text-center">

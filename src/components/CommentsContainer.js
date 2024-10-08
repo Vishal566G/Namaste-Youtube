@@ -137,7 +137,7 @@ const commentList = [
 
 const CommentList = ({ comments }) => {
   return comments.map((comment, index) => (
-    <div>
+    <div key={index}>
       <Comment data={comment} key={index} />
       <div className="ml-4 border border-l-black rounded-lg">
         <CommentList comments={comment.replies} />

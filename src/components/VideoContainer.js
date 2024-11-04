@@ -1,12 +1,13 @@
+// VideoContainer.js
 import { useEffect, useState } from "react";
 import { YOUTUBE_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
+import ShimmerCard from "./ShimmerCard";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
-
   const isExpanded = useSelector((store) => store.app.isMenuOpen);
 
   useEffect(() => {
@@ -17,27 +18,23 @@ const VideoContainer = () => {
     try {
       const data = await fetch(YOUTUBE_API);
       const json = await data.json();
-      setVideos(json.items); // Ensure that the items array is correctly set
-      console.log(json.items);
+      setVideos(json.items);
     } catch (error) {
       console.error("Error fetching videos: ", error);
     }
   };
 
-  // Only render VideoCard if videos are available
   return (
     <div className={`flex flex-wrap ${isExpanded ? "w-full" : "w-screen"}`}>
       {videos.length > 0 ? (
         videos.map((video) => (
           <Link to={"watch?v=" + video.id} key={video.id}>
-            {" "}
-            <VideoCard info={video} />{" "}
+            <VideoCard info={video} />
           </Link>
         ))
       ) : (
-        <p className="font-bold flex items-center justify-center w-full mt-60 text-2xl">
-          Loading...
-        </p>
+        // Render multiple ShimmerCards to simulate loading
+        Array.from({ length: 8 }).map((_, index) => <ShimmerCard key={index} />)
       )}
     </div>
   );
